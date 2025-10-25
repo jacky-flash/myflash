@@ -147,6 +147,51 @@
           font-size: 2.5rem;
           line-height: 1;
         }
+
+        /* Mobile menu styles */
+        .mobile-menu {
+          max-height: 0;
+          overflow: hidden;
+          transition: max-height 0.3s ease-in-out;
+        }
+
+        .mobile-menu.active {
+          max-height: 500px;
+        }
+
+        /* Hamburger animation */
+        .hamburger {
+          cursor: pointer;
+          display: none;
+        }
+
+        .hamburger span {
+          display: block;
+          width: 25px;
+          height: 3px;
+          background: var(--color-lightning-gold);
+          margin: 5px 0;
+          transition: 0.3s;
+          border-radius: 2px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+          transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+          transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        @media (max-width: 768px) {
+          .hamburger {
+            display: block;
+          }
+        }
       }
 
       /* Floating animation */
@@ -195,50 +240,107 @@
     <header
       class="bg-midnight-blue/90 backdrop-blur-md shadow-lg py-4 sticky top-0 z-50"
     >
-      <div class="max-w-7xl mx-auto px-5 flex justify-between items-center">
-        <a
-          href="#"
-          class="text-3xl font-bold bg-gradient-to-r from-lightning-gold via-bright-orange to-deep-orange bg-clip-text text-transparent"
-        >
-          <img src="./1758684606836.jpg" alt="閃電通LOGO" class="h-10" />
-        </a>
-        <nav>
-          <ul class="list-none flex">
-            <li class="ml-6">
-              <a
-                href="#plans"
-                class="no-underline text-gray-300 font-medium hover:text-lightning-gold transition-all duration-300"
-                >全球方案</a
-              >
-            </li>
-            <li class="ml-6">
-              <a
-                href="#ai-service"
-                class="no-underline text-gray-300 font-medium hover:text-lightning-gold transition-all duration-300"
-                >AI 服務</a
-              >
-            </li>
-            <li class="ml-6">
-              <a
-                href="#partners"
-                class="no-underline text-gray-300 font-medium hover:text-lightning-gold transition-all duration-300"
-                >合作夥伴</a
-              >
-            </li>
-            <li class="ml-6">
-              <a
-                href="#contact"
-                class="no-underline text-gray-300 font-medium hover:text-lightning-gold transition-all duration-300"
-                >聯絡我們</a
-              >
-            </li>
-          </ul>
-        </nav>
-        <a
-          href="#"
-          class="gradient-lightning text-white px-6 py-3 rounded-full no-underline font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 btn-glow"
-          >立即選購</a
-        >
+      <div class="max-w-7xl mx-auto px-5">
+        <div class="flex justify-between items-center">
+          <!-- Logo -->
+          <a
+            href="#"
+            class="text-3xl font-bold bg-gradient-to-r from-lightning-gold via-bright-orange to-deep-orange bg-clip-text text-transparent"
+          >
+            <img src="./1758684606836.jpg" alt="閃電通LOGO" class="h-10" />
+          </a>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:block">
+            <ul class="list-none flex">
+              <li class="ml-6">
+                <a
+                  href="#plans"
+                  class="no-underline text-gray-300 font-medium hover:text-lightning-gold transition-all duration-300"
+                  >全球方案</a
+                >
+              </li>
+              <li class="ml-6">
+                <a
+                  href="#ai-service"
+                  class="no-underline text-gray-300 font-medium hover:text-lightning-gold transition-all duration-300"
+                  >AI 服務</a
+                >
+              </li>
+              <li class="ml-6">
+                <a
+                  href="#partners"
+                  class="no-underline text-gray-300 font-medium hover:text-lightning-gold transition-all duration-300"
+                  >合作夥伴</a
+                >
+              </li>
+              <li class="ml-6">
+                <a
+                  href="#contact"
+                  class="no-underline text-gray-300 font-medium hover:text-lightning-gold transition-all duration-300"
+                  >聯絡我們</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <!-- Desktop CTA Button -->
+          <a
+            href="#"
+            class="hidden md:inline-block gradient-lightning text-white px-6 py-3 rounded-full no-underline font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 btn-glow"
+            >立即選購</a
+          >
+
+          <!-- Mobile Hamburger Menu -->
+          <div class="hamburger md:hidden" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu md:hidden" id="mobileMenu">
+          <nav class="mt-4">
+            <ul class="list-none flex flex-col space-y-4">
+              <li>
+                <a
+                  href="#plans"
+                  class="block no-underline text-gray-300 font-medium hover:text-lightning-gold transition-all duration-300 py-2"
+                  >全球方案</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#ai-service"
+                  class="block no-underline text-gray-300 font-medium hover:text-lightning-gold transition-all duration-300 py-2"
+                  >AI 服務</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#partners"
+                  class="block no-underline text-gray-300 font-medium hover:text-lightning-gold transition-all duration-300 py-2"
+                  >合作夥伴</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#contact"
+                  class="block no-underline text-gray-300 font-medium hover:text-lightning-gold transition-all duration-300 py-2"
+                  >聯絡我們</a
+                >
+              </li>
+              <li class="pt-2">
+                <a
+                  href="#"
+                  class="block gradient-lightning text-white px-6 py-3 rounded-full no-underline font-bold text-center hover:shadow-xl transition-all duration-300"
+                  >立即選購</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </header>
 
@@ -855,6 +957,24 @@
     <!-- Swiper JS Initialization -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        hamburger.addEventListener("click", function () {
+          hamburger.classList.toggle("active");
+          mobileMenu.classList.toggle("active");
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll("a");
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", function () {
+            hamburger.classList.remove("active");
+            mobileMenu.classList.remove("active");
+          });
+        });
+
         // Initialize Use Cases Swiper
         const useCasesSwiper = new Swiper(".useCasesSwiper", {
           slidesPerView: 1,
